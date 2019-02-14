@@ -1,4 +1,4 @@
-1 git clone repo
+1 git clone "repo"
 cd "nombre carpeta"
 git add .
 git commit -m "mensaje"
