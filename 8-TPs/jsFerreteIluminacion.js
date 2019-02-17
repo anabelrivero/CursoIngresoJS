@@ -9,6 +9,90 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
 
  */
 function CalcularPrecio () 
-{
- 	
+{	
+
+	var cantidades;
+	var lamparitas;
+	var precioBruto;
+	var descuento;
+	var porcentaje;
+	var marcaUno;
+	var ingresosBrutos;
+	
+
+	marcaUno=marca.value;
+	cantidades=cantidad.value;
+
+	porcentaje=100;
+	lamparitas=35;
+	lamparitas=parseInt(lamparitas);
+
+	precioBruto=cantidades*lamparitas;
+
+	if (cantidades >5)
+	{
+		porcentaje=50;
+	}else{
+
+		if (cantidades==5)
+		{
+
+			if (marcaUno=="ArgentinaLuz")
+			{
+				porcentaje=60;
+					
+			}else{
+
+				porcentaje=70;
+			}
+		}else{
+
+			if (cantidades==4)
+			{
+
+				if (marcaUno=="ArgentinaLuz" || marcaUno=="FelipeLamparas")
+				{
+					porcentaje=75;
+
+				}else{
+
+					porcentaje=80;
+				}
+
+			}else{
+				
+				if(cantidades==3)
+				{
+
+					if(marcaUno=="ArgentinaLuz")
+					{
+
+						porcentaje=85;
+					}else{
+
+						if(cantidades==3 && marcaUno=="FelipeLamparas")
+						{
+
+							porcentaje=90;
+						}else {
+
+						porcentaje=95;
+				}
+					}
+				}
+			}
+		}
+	}	
+	
+
+descuento=precioBruto*porcentaje/100;
+precioDescuento.value=descuento;
+alert(descuento);
+	
+	if (descuento > 120)
+	{
+
+		ingresosBrutos=descuento*10/100;
+		alert("Usted pago "+ingresosBrutos+" de IIBB");
+	}
 }
