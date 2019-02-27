@@ -28,5 +28,5 @@ function mostrar()
 		mensaje=("la suma es "+resultado+" y supero el 10");
 	}
 
-alert(resultado+mensaje);
+alert(mensaje);
 }
