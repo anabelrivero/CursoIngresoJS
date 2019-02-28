@@ -9,18 +9,28 @@ function mostrar()
 	var cantidadNotas;
 	var cantidadVarones;
 
+
 	cantidadVarones=0;
 	cantidadNotas=0;
+	notasTotal=0;
+	notaBaja=0;
+	
 
 	
 	while(cantidadNotas<5)
 	{
 
-		notas=prompt("Dame la nota");
-		sexo=prompt("dame el sexo");
+		notas=prompt("Ingrese la nota");
+		
 
-		notasTotal=notas+notasTotal;
-		cantidadNotas=cantidadNotas+1;
+		var nota=parseInt(nota);
+		var notasTotal=parseInt(notasTotal);
+
+		notasTotal=notasTotal+notas;
+
+		sexo=prompt("Ingrese el sexo");
+
+		
 
 		while(notas<0 || notas>10)
 		{
@@ -28,7 +38,7 @@ function mostrar()
 			notas=prompt("error, nota ingresada no valida");
 		}
 
-		while(sexo!="f" || sexo!="m")
+		while(sexo!="f" && sexo!="m")
 		{
 
 			sexo=prompt("error, sexo ingresado no valido");
@@ -49,7 +59,22 @@ function mostrar()
 
 			}
 		}
+			
 
+
+		if (nota>=6 && sexo=="m")
+		{		
+			
+			cantidadVarones=cantidadVarones+1;
+		}
+
+		cantidadNotas=cantidadNotas=1;
 	}
+	
+	
+	promedio=notasTotal/cantidadNotas;
+
+
+	alert("El promedio de alumnos es: "+promedio+" la nota mas baja es "+notaBaja+" y su sexo es: "+sexoNotaBaja+", "+cantidadVarones+" varones sacaron mas de 5");
 
 }
