@@ -1,80 +1,87 @@
 function mostrar()
 {
-	var notas;
-	var sexo;
-	var promedio;
-	var notasTotal;
-	var sexoNotaBaja;
-	var notaBaja;
-	var cantidadNotas;
-	var cantidadVarones;
+	var velocidad;
+	var velocidadSuma;
+	var acumuladorVelocidad;
+	var combustible;
+	var combustibleLiquido;
+	var combustibleSolido;
+	var promedioVelocidad;
+	var velocidadBaja;
+	var velocidadAlta;
+	var cantidadCombustibleMayor100;
+	var ingreso;
+
+	cantidadCombustibleMayor100=0;
+	acumuladorVelocidad=0;
+	ingreso="si";
+	velocidadSuma=0;
+	velocidadSuma=parseInt(velocidadSuma);
+	velocidadAlta=0;
 
 
-	cantidadVarones=0;
-	cantidadNotas=0;
-	notasTotal=0;
-	notaBaja=0;
-	
-
-	
-	while(cantidadNotas<5)
+	while(ingreso=="si")
 	{
 
-		notas=prompt("Ingrese la nota");
+		velocidad=prompt("Ingrese velocidades en kilometros");
+		combustible=prompt("Ingrese el tipo de combustible, para liquido l y para solido s");
 		
-
-		var nota=parseInt(nota);
-		var notasTotal=parseInt(notasTotal);
-
-		notasTotal=notasTotal+notas;
-
-		sexo=prompt("Ingrese el sexo");
+		velocidad=parseInt(velocidad);
 
 		
 
-		while(notas<0 || notas>10)
+		while(velocidad<0 || velocidad>250)
 		{
 
-			notas=prompt("error, nota ingresada no valida");
+			velocidad=prompt("error, ingrese velocidades en kilometros");
+			velocidad=parseInt(velocidad);
 		}
 
-		while(sexo!="f" && sexo!="m")
+		while(combustible!=="s" && combustible!=="l")
 		{
 
-			sexo=prompt("error, sexo ingresado no valido");
+			combustible=prompt("Ingrese el tipo de combustible, para liquido l y para solido s" );
+
 		}
-
-		if(cantidadNotas==0)
+		
+		if(cantidadCombustibleMayor100==0)
 		{
+			combustibleBajo=combustible;
+			velocidadBaja=velocidad;
 
-			notaBaja=notas;
-			sexoNotaBaja=sexo;
 		}else{
 
-			if(notas<notaBaja)
+			if(velocidad<velocidadBaja)
 			{
-
-				notaBaja=notas;
-				sexoNotaBaja=sexo;
-
+				combustibleBajo=combustible;
+				velocidadBaja=velocidad;
 			}
 		}
-			
 
+			if(velocidad>100 && combustible=="l")
+				{
+		
+					cantidadCombustibleMayor100=cantidadCombustibleMayor100+1;
+					combustibleLiquido=combustible;
+				}
+		
 
-		if (nota>=6 && sexo=="m")
-		{		
-			
-			cantidadVarones=cantidadVarones+1;
+		if(velocidad>velocidadAlta && combustible=="s")
+		{
+			velocidadAlta=velocidad;
+			combustibleSolido=combustible;
+
 		}
 
-		cantidadNotas=cantidadNotas=1;
+		ingreso=prompt("Desea continuar?");
+		velocidadSuma=velocidadSuma+velocidad;
+		acumuladorVelocidad=acumuladorVelocidad+1;
 	}
-	
-	
-	promedio=notasTotal/cantidadNotas;
 
+	
 
-	alert("El promedio de alumnos es: "+promedio+" la nota mas baja es "+notaBaja+" y su sexo es: "+sexoNotaBaja+", "+cantidadVarones+" varones sacaron mas de 5");
+	promedioVelocidad=velocidadSuma/acumuladorVelocidad;
+
+	alert("el promedio de las velocidades totales es: "+promedioVelocidad+", las velocidades mas bajas "+velocidadBaja+" y su tipo de combustible es: "+combustibleBajo+", combustibles liquidos que su velocidad supere los 100km: "+cantidadCombustibleMayor100+" "+combustibleLiquido+"combustibles solidos mayor a 200km: "+velocidadAlta);
 
 }
